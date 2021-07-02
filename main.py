@@ -23,7 +23,7 @@ def get_data_loader(train_set, test_set, batch_size=128):
 def get_model(norm_type="BatchNorm",model_name="resnet_18"):
 
     if model_name == "resnet_18":
-        net = ResNet18(norm_type)
+        net = ResNet18(norm_type=norm_type)
 
     return net
 
