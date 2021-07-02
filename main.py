@@ -96,14 +96,6 @@ def test(net, criterion, device, testloader, test_losses, test_acc):
     
 
 
-def dataloaders(trainset, testset):
-    trainloader = torch.utils.data.DataLoader(
-    trainset, batch_size=128, shuffle=True, num_workers=4)
-
-    testloader = torch.utils.data.DataLoader(
-    testset, batch_size=100, shuffle=False, num_workers=4)
-    
-    return trainloader, testloader
 
 
 def training_loop(no_of_epoch, net, criterion, optimizer, device, trainloader, testloader, scheduler):
