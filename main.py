@@ -20,10 +20,10 @@ def get_data_loader(train_set, test_set, batch_size=128):
     
     return train_loader, test_loader
 
-def get_model(model_name="resnet_18"):
+def get_model(norm_type="BatchNorm",model_name="resnet_18"):
 
     if model_name == "resnet_18":
-        net = ResNet18()
+        net = ResNet18(norm_type=norm_type)
 
     return net
 
@@ -48,7 +48,6 @@ def set_model_train_config(model, loss="cross_entropy", optimizer="SGD", lr=0.1)
     return device, classes, model, criterion, optimizer, scheduler
 
 
-# Training
 def train(net, criterion, optimizer, device, trainloader, train_losses, train_acc):
     net.train()
     train_loss = 0
@@ -92,23 +91,14 @@ def test(net, criterion, device, testloader, test_losses, test_acc):
     test_losses.append(test_loss/(batch_idx+1))
     test_acc.append(100.*correct/total)
     
-    # Save checkpoint.
     
     return test_losses, test_acc
     
 
 
-def dataloaders(trainset, testset):
-    trainloader = torch.utils.data.DataLoader(
-    trainset, batch_size=128, shuffle=True, num_workers=4)
-
-    testloader = torch.utils.data.DataLoader(
-    testset, batch_size=100, shuffle=False, num_workers=4)
-    
-    return trainloader, testloader
 
 
-def start_training(no_of_epoch, net, criterion, optimizer, device, trainloader, testloader, scheduler):
+def training_loop(no_of_epoch, net, criterion, optimizer, device, trainloader, testloader, scheduler):
     train_loss = []
     train_acc = []
     test_loss = []

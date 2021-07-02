@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 from torchvision.utils import make_grid
 import numpy as np
 
-from utils_grad_cam import layer_finders
-from utils_grad_cam import visualize_cam, denormalize
+from utils.utils_grad_cam import layer_finders
+from utils.utils_grad_cam import visualize_cam, denormalize
 
 class GradCAM:
     """Calculate GradCAM salinecy map.

@@ -8,7 +8,7 @@ import torchvision
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader, Dataset
 import matplotlib.pyplot as plt
-from Albumentationtransform import AlbumentationTransforms
+from utils.Albumentationtransform import AlbumentationTransforms
 
 import albumentations as A
 
