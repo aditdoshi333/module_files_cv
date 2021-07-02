@@ -48,7 +48,6 @@ def set_model_train_config(model, loss="cross_entropy", optimizer="SGD", lr=0.1)
     return device, classes, model, criterion, optimizer, scheduler
 
 
-# Training
 def train(net, criterion, optimizer, device, trainloader, train_losses, train_acc):
     net.train()
     train_loss = 0
@@ -92,7 +91,6 @@ def test(net, criterion, device, testloader, test_losses, test_acc):
     test_losses.append(test_loss/(batch_idx+1))
     test_acc.append(100.*correct/total)
     
-    # Save checkpoint.
     
     return test_losses, test_acc
     
@@ -108,7 +106,7 @@ def dataloaders(trainset, testset):
     return trainloader, testloader
 
 
-def start_training(no_of_epoch, net, criterion, optimizer, device, trainloader, testloader, scheduler):
+def training_loop(no_of_epoch, net, criterion, optimizer, device, trainloader, testloader, scheduler):
     train_loss = []
     train_acc = []
     test_loss = []
