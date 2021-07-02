@@ -20,10 +20,10 @@ def get_data_loader(train_set, test_set, batch_size=128):
     
     return train_loader, test_loader
 
-def get_model(model_name="resnet_18"):
+def get_model(norm_type="BatchNorm",model_name="resnet_18"):
 
     if model_name == "resnet_18":
-        net = ResNet18()
+        net = ResNet18(norm_type)
 
     return net
 
